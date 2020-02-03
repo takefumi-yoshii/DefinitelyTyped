@@ -556,6 +556,10 @@ export function useSelector<TState = DefaultRootState, TSelected = unknown>(
     selector: (state: TState) => TSelected,
     equalityFn?: (left: TSelected, right: TSelected) => boolean
 ): TSelected;
+export function useSelector<
+    TSelector extends (state: DefaultRootState) => unknown,
+    TSelected = ReturnType<TSelector>
+  >(selector: TSelector, equalityFn?: (left: TSelected, right: TSelected) => boolean): TSelected
 
 /**
  * This interface allows you to easily create a hook that is properly typed for your
